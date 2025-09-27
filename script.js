@@ -587,6 +587,9 @@ class PortfolioFilter {
   init() {
     if (!this.filterBtns.length) return;
 
+    // Show all items by default
+    this.showAllItems();
+
     this.filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const filter = btn.getAttribute('data-filter');
@@ -596,22 +599,27 @@ class PortfolioFilter {
     });
   }
 
+  showAllItems() {
+    // Ensure all portfolio items are visible by default
+    this.portfolioItems.forEach(item => {
+      item.style.display = 'block';
+      item.style.opacity = '1';
+      item.style.transform = 'scale(1)';
+    });
+  }
+
   filterItems(filter) {
     this.portfolioItems.forEach(item => {
       const category = item.getAttribute('data-category');
       
       if (filter === 'all' || category === filter) {
         item.style.display = 'block';
-        setTimeout(() => {
-          item.style.opacity = '1';
-          item.style.transform = 'scale(1)';
-        }, 10);
+        item.style.opacity = '1';
+        item.style.transform = 'scale(1)';
       } else {
+        item.style.display = 'none';
         item.style.opacity = '0';
-        item.style.transform = 'scale(0.8)';
-        setTimeout(() => {
-          item.style.display = 'none';
-        }, 300);
+        item.style.transform = 'scale(1)';
       }
     });
   }
@@ -1146,37 +1154,9 @@ class GSAPAnimations {
       });
     });
 
-    // Service cards animation
-    gsap.utils.toArray('.service-card').forEach((card, index) => {
-      gsap.from(card, {
-        y: 60,
-        opacity: 0,
-        duration: 0.8,
-        delay: index * 0.2,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: card,
-          start: 'top 85%',
-          toggleActions: 'play none none reverse'
-        }
-      });
-    });
+    // Service cards animation - REMOVED for better performance
 
-    // Portfolio items animation
-    gsap.utils.toArray('.portfolio-item').forEach((item, index) => {
-      gsap.from(item, {
-        scale: 0.8,
-        opacity: 0,
-        duration: 0.6,
-        delay: index * 0.1,
-        ease: 'back.out(1.7)',
-        scrollTrigger: {
-          trigger: item,
-          start: 'top 85%',
-          toggleActions: 'play none none reverse'
-        }
-      });
-    });
+    // Portfolio items animation - REMOVED for better performance
   }
 }
 
