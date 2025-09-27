@@ -1266,38 +1266,12 @@ section {
   border-radius: var(--border-radius-xl);
   box-shadow: var(--shadow);
   border: 1px solid var(--border);
-  transition: var(--transition);
   position: relative;
-  overflow: hidden;
-}
-
-.service-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--gradient-primary);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: var(--transition);
-}
-
-.service-card:hover::before {
-  transform: scaleX(1);
-}
-
-.service-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-xl);
-  border-color: var(--primary);
 }
 
 .service-card.featured {
   background: var(--gradient-primary);
   color: white;
-  transform: scale(1.05);
 }
 
 .service-card.featured .service-title,
@@ -1334,11 +1308,6 @@ section {
   color: var(--primary);
   font-size: var(--text-2xl);
   margin-bottom: var(--space-xl);
-  transition: var(--transition);
-}
-
-.service-card:hover .service-icon {
-  transform: scale(1.1) rotate(5deg);
 }
 
 .service-title {
@@ -1377,11 +1346,6 @@ section {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  transition: var(--transition);
-}
-
-.service-link:hover {
-  gap: var(--space-md);
 }
 
 .service-card.featured .service-link {
@@ -1412,15 +1376,12 @@ section {
   border-radius: 50px;
   font-weight: 600;
   cursor: pointer;
-  transition: var(--transition);
 }
 
-.filter-btn:hover,
 .filter-btn.active {
   border-color: var(--primary);
   background: var(--primary);
   color: white;
-  transform: translateY(-2px);
 }
 
 .portfolio-grid {
@@ -1431,7 +1392,9 @@ section {
 }
 
 .portfolio-item {
-  transition: var(--transition);
+  display: block;
+  opacity: 1;
+  transform: scale(1);
 }
 
 .portfolio-card {
@@ -1440,12 +1403,6 @@ section {
   overflow: hidden;
   box-shadow: var(--shadow);
   border: 1px solid var(--border);
-  transition: var(--transition);
-}
-
-.portfolio-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-xl);
 }
 
 .portfolio-image {
@@ -1457,11 +1414,6 @@ section {
   width: 100%;
   height: 250px;
   object-fit: cover;
-  transition: var(--transition);
-}
-
-.portfolio-card:hover .portfolio-image img {
-  transform: scale(1.1);
 }
 
 .portfolio-overlay {
@@ -1475,7 +1427,6 @@ section {
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: var(--transition);
 }
 
 .portfolio-card:hover .portfolio-overlay {
@@ -1512,12 +1463,6 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: var(--transition);
-}
-
-.portfolio-btn:hover {
-  background: var(--primary-dark);
-  transform: scale(1.1);
 }
 
 .portfolio-content {
