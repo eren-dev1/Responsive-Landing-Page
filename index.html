@@ -1,0 +1,1285 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+  <meta name="description" content="Professional responsive landing page with advanced animations, modern design, and comprehensive features for business websites." />
+  <meta name="keywords" content="landing page, responsive, modern, professional, animations, CSS Grid, Flexbox, GSAP, business, portfolio" />
+  <meta name="author" content="Moderna Design Studio" />
+  <meta name="theme-color" content="#0b6eff" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Moderna" />
+  <title>Moderna - Professional Digital Solutions</title>
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- GSAP for advanced animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loader">
+      <div class="loader-ring"></div>
+      <div class="loader-text">Moderna</div>
+    </div>
+  </div>
+
+  <!-- Progress Bar -->
+  <div id="progress-bar" class="progress-bar"></div>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Header -->
+  <header class="header transparent" id="siteHeader">
+    <div class="nav-inner container">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <i class="fas fa-rocket"></i>
+        </div>
+        <div class="brand-text">
+          <div class="brand-name">Moderna</div>
+          <div class="brand-tagline">Digital Solutions</div>
+        </div>
+      </div>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#portfolio" class="nav-link">Portfolio</a>
+        <a href="#team" class="nav-link">Team</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <a class="cta-desktop" href="#contact">Get Started</a>
+      </nav>
+
+      <div class="header-actions">
+        <button id="darkToggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-overlay" onclick="closeDrawer()"></div>
+      <aside class="mobile-drawer" id="mobileDrawer">
+        <div class="mobile-header">
+          <div class="mobile-brand">
+            <div class="logo">
+              <i class="fas fa-rocket"></i>
+            </div>
+            <div class="brand-name">Moderna</div>
+          </div>
+          <button class="close-btn" onclick="closeDrawer()" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <nav class="mobile-links">
+          <a href="#home" onclick="closeDrawer()">Home</a>
+          <a href="#about" onclick="closeDrawer()">About</a>
+          <a href="#services" onclick="closeDrawer()">Services</a>
+          <a href="#portfolio" onclick="closeDrawer()">Portfolio</a>
+          <a href="#team" onclick="closeDrawer()">Team</a>
+          <a href="#pricing" onclick="closeDrawer()">Pricing</a>
+          <a href="#contact" onclick="closeDrawer()">Contact</a>
+          <div class="mobile-cta">
+            <a class="btn btn-primary" href="#contact" onclick="closeDrawer()">Get Started</a>
+          </div>
+        </nav>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-background">
+        <canvas id="particle-canvas"></canvas>
+        <div class="bg-shapes">
+          <div class="shape shape-1" id="shape1"></div>
+          <div class="shape shape-2" id="shape2"></div>
+          <div class="shape shape-3" id="shape3"></div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <div class="hero-badge">
+              <i class="fas fa-star"></i>
+              <span>Award-winning digital agency</span>
+            </div>
+            <h1 class="hero-title">
+              <span class="text-gradient">Designing</span> delightful
+              <br><span id="typed-text" class="typed-text">experiences</span>
+            </h1>
+            <p class="hero-description">
+              We create stunning digital experiences that drive results. From concept to launch, 
+              we build responsive websites, mobile apps, and digital solutions that captivate 
+              your audience and grow your business.
+            </p>
+            
+            <div class="hero-actions">
+              <a class="btn btn-primary btn-large" href="#contact">
+                <span>Start Your Project</span>
+                <i class="fas fa-arrow-right"></i>
+              </a>
+              <a class="btn btn-outline btn-large" href="#portfolio">
+                <i class="fas fa-play"></i>
+                <span>View Our Work</span>
+              </a>
+            </div>
+
+            <!-- Stats Counter -->
+            <div class="hero-stats" data-aos="fade-up" data-aos-delay="300">
+              <div class="stat-item">
+                <h3 class="stat-number" data-target="250">0</h3>
+                <p class="stat-label">Projects Completed</p>
+              </div>
+              <div class="stat-item">
+                <h3 class="stat-number" data-target="48">0</h3>
+                <p class="stat-label">Awards Won</p>
+              </div>
+              <div class="stat-item">
+                <h3 class="stat-number" data-target="180">0</h3>
+                <p class="stat-label">Happy Clients</p>
+              </div>
+              <div class="stat-item">
+                <h3 class="stat-number" data-target="99">0</h3>
+                <p class="stat-label">Success Rate %</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+            <div class="hero-card floating">
+              <div class="card-content">
+                <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=1200&auto=format&fit=crop" alt="Modern workspace" class="hero-image">
+                <div class="card-overlay">
+                  <div class="overlay-content">
+                    <i class="fas fa-play-circle"></i>
+                    <span>Watch Demo</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Floating Elements -->
+            <div class="floating-element element-1" data-aos="zoom-in" data-aos-delay="400">
+              <i class="fas fa-code"></i>
+              <span>Clean Code</span>
+            </div>
+            <div class="floating-element element-2" data-aos="zoom-in" data-aos-delay="600">
+              <i class="fas fa-mobile-alt"></i>
+              <span>Responsive</span>
+            </div>
+            <div class="floating-element element-3" data-aos="zoom-in" data-aos-delay="800">
+              <i class="fas fa-bolt"></i>
+              <span>Fast Loading</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="1000">
+        <div class="scroll-mouse">
+          <div class="scroll-wheel"></div>
+        </div>
+        <span>Scroll to explore</span>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-badge">About Us</span>
+          <h2 class="section-title">Crafting Digital Excellence Since 2018</h2>
+          <p class="section-description">
+            We're a passionate team of designers, developers, and strategists dedicated to 
+            creating exceptional digital experiences that drive business growth.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-content" data-aos="fade-right">
+            <div class="about-text">
+              <h3>Our Story</h3>
+              <p>
+                Founded with a vision to bridge the gap between creativity and technology, 
+                Moderna has evolved into a leading digital agency. We believe in the power 
+                of thoughtful design and cutting-edge development to transform businesses 
+                and create meaningful connections with audiences.
+              </p>
+              <p>
+                Our collaborative approach ensures that every project reflects our client's 
+                unique vision while incorporating industry best practices and innovative solutions.
+              </p>
+            </div>
+
+            <div class="about-features">
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i class="fas fa-lightbulb"></i>
+                </div>
+                <div class="feature-content">
+                  <h4>Innovation First</h4>
+                  <p>We stay ahead of trends to deliver cutting-edge solutions.</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i class="fas fa-users"></i>
+                </div>
+                <div class="feature-content">
+                  <h4>Client-Centered</h4>
+                  <p>Your success is our priority, always.</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i class="fas fa-award"></i>
+                </div>
+                <div class="feature-content">
+                  <h4>Quality Assured</h4>
+                  <p>Rigorous testing ensures flawless delivery.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-visual" data-aos="fade-left">
+            <div class="about-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop" alt="Team collaboration" class="about-image">
+              <div class="image-overlay">
+                <div class="play-button">
+                  <i class="fas fa-play"></i>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Achievement Cards -->
+            <div class="achievement-cards">
+              <div class="achievement-card card-1" data-aos="zoom-in" data-aos-delay="200">
+                <i class="fas fa-trophy"></i>
+                <span>Best Agency 2023</span>
+              </div>
+              <div class="achievement-card card-2" data-aos="zoom-in" data-aos-delay="400">
+                <i class="fas fa-star"></i>
+                <span>5.0 Rating</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-badge">Our Services</span>
+          <h2 class="section-title">Complete Digital Solutions</h2>
+          <p class="section-description">
+            From strategy to execution, we provide comprehensive digital services 
+            to help your business thrive in the digital landscape.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-icon">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <h3 class="service-title">Web Development</h3>
+            <p class="service-description">
+              Custom websites and web applications built with modern technologies 
+              for optimal performance and user experience.
+            </p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> Responsive Design</li>
+              <li><i class="fas fa-check"></i> SEO Optimized</li>
+              <li><i class="fas fa-check"></i> Fast Loading</li>
+              <li><i class="fas fa-check"></i> Secure & Scalable</li>
+            </ul>
+            <a href="#contact" class="service-link">
+              Learn More <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <div class="service-card featured" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-badge">Most Popular</div>
+            <div class="service-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h3 class="service-title">Mobile Apps</h3>
+            <p class="service-description">
+              Native and cross-platform mobile applications that deliver 
+              exceptional user experiences across iOS and Android.
+            </p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> iOS & Android</li>
+              <li><i class="fas fa-check"></i> React Native</li>
+              <li><i class="fas fa-check"></i> UI/UX Design</li>
+              <li><i class="fas fa-check"></i> App Store Optimization</li>
+            </ul>
+            <a href="#contact" class="service-link">
+              Learn More <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-icon">
+              <i class="fas fa-paint-brush"></i>
+            </div>
+            <h3 class="service-title">UI/UX Design</h3>
+            <p class="service-description">
+              Beautiful, intuitive interfaces designed to enhance user engagement 
+              and drive conversions for your digital products.
+            </p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> User Research</li>
+              <li><i class="fas fa-check"></i> Wireframing</li>
+              <li><i class="fas fa-check"></i> Prototyping</li>
+              <li><i class="fas fa-check"></i> Design Systems</li>
+            </ul>
+            <a href="#contact" class="service-link">
+              Learn More <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-icon">
+              <i class="fas fa-search"></i>
+            </div>
+            <h3 class="service-title">SEO & Marketing</h3>
+            <p class="service-description">
+              Comprehensive digital marketing strategies to increase your online 
+              visibility and attract more qualified leads.
+            </p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> SEO Optimization</li>
+              <li><i class="fas fa-check"></i> Content Marketing</li>
+              <li><i class="fas fa-check"></i> Social Media</li>
+              <li><i class="fas fa-check"></i> Analytics & Reporting</li>
+            </ul>
+            <a href="#contact" class="service-link">
+              Learn More <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-icon">
+              <i class="fas fa-shopping-cart"></i>
+            </div>
+            <h3 class="service-title">E-commerce</h3>
+            <p class="service-description">
+              Complete e-commerce solutions that drive sales with secure payment 
+              processing and inventory management.
+            </p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> Custom Stores</li>
+              <li><i class="fas fa-check"></i> Payment Integration</li>
+              <li><i class="fas fa-check"></i> Inventory Management</li>
+              <li><i class="fas fa-check"></i> Analytics Dashboard</li>
+            </ul>
+            <a href="#contact" class="service-link">
+              Learn More <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-icon">
+              <i class="fas fa-cogs"></i>
+            </div>
+            <h3 class="service-title">Maintenance & Support</h3>
+            <p class="service-description">
+              Ongoing maintenance and support services to keep your digital 
+              assets running smoothly and securely.
+            </p>
+            <ul class="service-features">
+              <li><i class="fas fa-check"></i> 24/7 Monitoring</li>
+              <li><i class="fas fa-check"></i> Security Updates</li>
+              <li><i class="fas fa-check"></i> Performance Optimization</li>
+              <li><i class="fas fa-check"></i> Technical Support</li>
+            </ul>
+            <a href="#contact" class="service-link">
+              Learn More <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-badge">Our Work</span>
+          <h2 class="section-title">Portfolio Showcase</h2>
+          <p class="section-description">
+            Discover our latest projects and see how we've helped businesses 
+            achieve their digital goals.
+          </p>
+        </div>
+
+        <!-- Portfolio Filter -->
+        <div class="portfolio-filter" data-aos="fade-up" data-aos-delay="100">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="web">Web Design</button>
+          <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
+          <button class="filter-btn" data-filter="branding">Branding</button>
+          <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+        </div>
+
+        <!-- Portfolio Grid -->
+        <div class="portfolio-grid" id="portfolioGrid">
+          <div class="portfolio-item" data-category="web" data-aos="fade-up" data-aos-delay="100">
+            <div class="portfolio-card">
+              <div class="portfolio-image">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" alt="TechStart Website">
+                <div class="portfolio-overlay">
+                  <div class="portfolio-info">
+                    <h4>TechStart Website</h4>
+                    <p>Modern corporate website with advanced animations</p>
+                    <div class="portfolio-actions">
+                      <a href="#" class="portfolio-btn"><i class="fas fa-external-link-alt"></i></a>
+                      <a href="#" class="portfolio-btn"><i class="fas fa-search-plus"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="portfolio-content">
+                <div class="portfolio-tags">
+                  <span class="tag">Web Design</span>
+                  <span class="tag">React</span>
+                </div>
+                <h4 class="portfolio-title">TechStart Website</h4>
+                <p class="portfolio-description">Complete digital transformation for a tech startup</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-item" data-category="mobile" data-aos="fade-up" data-aos-delay="200">
+            <div class="portfolio-card">
+              <div class="portfolio-image">
+                <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=800&auto=format&fit=crop" alt="FitTracker App">
+                <div class="portfolio-overlay">
+                  <div class="portfolio-info">
+                    <h4>FitTracker Mobile App</h4>
+                    <p>iOS and Android fitness tracking application</p>
+                    <div class="portfolio-actions">
+                      <a href="#" class="portfolio-btn"><i class="fas fa-external-link-alt"></i></a>
+                      <a href="#" class="portfolio-btn"><i class="fas fa-search-plus"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="portfolio-content">
+                <div class="portfolio-tags">
+                  <span class="tag">Mobile App</span>
+                  <span class="tag">React Native</span>
+                </div>
+                <h4 class="portfolio-title">FitTracker App</h4>
+                <p class="portfolio-description">Cross-platform fitness tracking solution</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-item" data-category="ecommerce" data-aos="fade-up" data-aos-delay="300">
+            <div class="portfolio-card">
+              <div class="portfolio-image">
+                <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=800&auto=format&fit=crop" alt="Fashion Store">
+                <div class="portfolio-overlay">
+                  <div class="portfolio-info">
+                    <h4>Luxury Fashion Store</h4>
+                    <p>Premium e-commerce platform with advanced features</p>
+                    <div class="portfolio-actions">
+                      <a href="#" class="portfolio-btn"><i class="fas fa-external-link-alt"></i></a>
+                      <a href="#" class="portfolio-btn"><i class="fas fa-search-plus"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="portfolio-content">
+                <div class="portfolio-tags">
+                  <span class="tag">E-commerce</span>
+                  <span class="tag">Shopify</span>
+                </div>
+                <h4 class="portfolio-title">Fashion Store</h4>
+                <p class="portfolio-description">Luxury fashion e-commerce platform</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-item" data-category="branding" data-aos="fade-up" data-aos-delay="100">
+            <div class="portfolio-card">
+              <div class="portfolio-image">
+                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop" alt="Brand Identity">
+                <div class="portfolio-overlay">
+                  <div class="portfolio-info">
+                    <h4>Creative Agency Brand</h4>
+                    <p>Complete brand identity and visual system</p>
+                    <div class="portfolio-actions">
+                      <a href="#" class="portfolio-btn"><i class="fas fa-external-link-alt"></i></a>
+                      <a href="#" class="portfolio-btn"><i class="fas fa-search-plus"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="portfolio-content">
+                <div class="portfolio-tags">
+                  <span class="tag">Branding</span>
+                  <span class="tag">Identity</span>
+                </div>
+                <h4 class="portfolio-title">Creative Agency</h4>
+                <p class="portfolio-description">Brand identity and visual system design</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-item" data-category="web" data-aos="fade-up" data-aos-delay="200">
+            <div class="portfolio-card">
+              <div class="portfolio-image">
+                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=800&auto=format&fit=crop" alt="Restaurant Website">
+                <div class="portfolio-overlay">
+                  <div class="portfolio-info">
+                    <h4>Restaurant Chain Website</h4>
+                    <p>Multi-location restaurant website with online ordering</p>
+                    <div class="portfolio-actions">
+                      <a href="#" class="portfolio-btn"><i class="fas fa-external-link-alt"></i></a>
+                      <a href="#" class="portfolio-btn"><i class="fas fa-search-plus"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="portfolio-content">
+                <div class="portfolio-tags">
+                  <span class="tag">Web Design</span>
+                  <span class="tag">WordPress</span>
+                </div>
+                <h4 class="portfolio-title">Bella Vista</h4>
+                <p class="portfolio-description">Restaurant chain digital experience</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-item" data-category="mobile" data-aos="fade-up" data-aos-delay="300">
+            <div class="portfolio-card">
+              <div class="portfolio-image">
+                <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=800&auto=format&fit=crop" alt="Banking App">
+                <div class="portfolio-overlay">
+                  <div class="portfolio-info">
+                    <h4>Digital Banking App</h4>
+                    <p>Secure mobile banking solution with modern UX</p>
+                    <div class="portfolio-actions">
+                      <a href="#" class="portfolio-btn"><i class="fas fa-external-link-alt"></i></a>
+                      <a href="#" class="portfolio-btn"><i class="fas fa-search-plus"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="portfolio-content">
+                <div class="portfolio-tags">
+                  <span class="tag">Mobile App</span>
+                  <span class="tag">Flutter</span>
+                </div>
+                <h4 class="portfolio-title">SecureBank</h4>
+                <p class="portfolio-description">Next-gen mobile banking experience</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio-cta" data-aos="fade-up" data-aos-delay="200">
+          <a href="#contact" class="btn btn-primary btn-large">
+            <span>Start Your Project</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-badge">Our Team</span>
+          <h2 class="section-title">Meet the Experts</h2>
+          <p class="section-description">
+            Talented professionals who are passionate about creating 
+            exceptional digital experiences.
+          </p>
+        </div>
+
+        <div class="team-grid">
+          <div class="team-member" data-aos="fade-up" data-aos-delay="100">
+            <div class="member-image">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop" alt="Alex Johnson">
+              <div class="member-overlay">
+                <div class="social-links">
+                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                  <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                  <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="member-info">
+              <h4 class="member-name">Alex Johnson</h4>
+              <p class="member-role">Creative Director</p>
+              <p class="member-bio">10+ years crafting beautiful digital experiences</p>
+            </div>
+          </div>
+
+          <div class="team-member" data-aos="fade-up" data-aos-delay="200">
+            <div class="member-image">
+              <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=400&auto=format&fit=crop" alt="Sarah Chen">
+              <div class="member-overlay">
+                <div class="social-links">
+                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                  <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                  <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="member-info">
+              <h4 class="member-name">Sarah Chen</h4>
+              <p class="member-role">Lead Developer</p>
+              <p class="member-bio">Full-stack expert with passion for clean code</p>
+            </div>
+          </div>
+
+          <div class="team-member" data-aos="fade-up" data-aos-delay="300">
+            <div class="member-image">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&auto=format&fit=crop" alt="Mike Rodriguez">
+              <div class="member-overlay">
+                <div class="social-links">
+                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                  <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                  <a href="#" aria-label="Behance"><i class="fab fa-behance"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="member-info">
+              <h4 class="member-name">Mike Rodriguez</h4>
+              <p class="member-role">UX/UI Designer</p>
+              <p class="member-bio">User-centered design advocate and innovator</p>
+            </div>
+          </div>
+
+          <div class="team-member" data-aos="fade-up" data-aos-delay="400">
+            <div class="member-image">
+              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400&auto=format&fit=crop" alt="Emily Davis">
+              <div class="member-overlay">
+                <div class="social-links">
+                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                  <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                  <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="member-info">
+              <h4 class="member-name">Emily Davis</h4>
+              <p class="member-role">Project Manager</p>
+              <p class="member-bio">Ensuring smooth delivery and client satisfaction</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-badge">Pricing Plans</span>
+          <h2 class="section-title">Choose Your Package</h2>
+          <p class="section-description">
+            Flexible pricing options designed to fit your business needs and budget.
+          </p>
+        </div>
+
+        <div class="pricing-toggle" data-aos="fade-up" data-aos-delay="100">
+          <span class="toggle-label">Monthly</span>
+          <div class="toggle-switch">
+            <input type="checkbox" id="pricingToggle">
+            <label for="pricingToggle"></label>
+          </div>
+          <span class="toggle-label">Yearly <span class="discount">Save 25%</span></span>
+        </div>
+
+        <div class="pricing-grid">
+          <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="pricing-header">
+              <h3 class="plan-name">Starter</h3>
+              <p class="plan-description">Perfect for small businesses</p>
+              <div class="price">
+                <span class="currency">$</span>
+                <span class="amount monthly">99</span>
+                <span class="amount yearly">75</span>
+                <span class="period">/month</span>
+              </div>
+            </div>
+            <div class="pricing-features">
+              <ul>
+                <li><i class="fas fa-check"></i> 5-Page Website</li>
+                <li><i class="fas fa-check"></i> Responsive Design</li>
+                <li><i class="fas fa-check"></i> Basic SEO</li>
+                <li><i class="fas fa-check"></i> Contact Form</li>
+                <li><i class="fas fa-check"></i> 3 Months Support</li>
+                <li class="disabled"><i class="fas fa-times"></i> E-commerce</li>
+                <li class="disabled"><i class="fas fa-times"></i> Custom Analytics</li>
+              </ul>
+            </div>
+            <div class="pricing-action">
+              <a href="#contact" class="btn btn-outline">Get Started</a>
+            </div>
+          </div>
+
+          <div class="pricing-card featured" data-aos="fade-up" data-aos-delay="200">
+            <div class="popular-badge">Most Popular</div>
+            <div class="pricing-header">
+              <h3 class="plan-name">Professional</h3>
+              <p class="plan-description">Ideal for growing businesses</p>
+              <div class="price">
+                <span class="currency">$</span>
+                <span class="amount monthly">199</span>
+                <span class="amount yearly">149</span>
+                <span class="period">/month</span>
+              </div>
+            </div>
+            <div class="pricing-features">
+              <ul>
+                <li><i class="fas fa-check"></i> 10-Page Website</li>
+                <li><i class="fas fa-check"></i> Premium Design</li>
+                <li><i class="fas fa-check"></i> Advanced SEO</li>
+                <li><i class="fas fa-check"></i> Contact & Lead Forms</li>
+                <li><i class="fas fa-check"></i> 6 Months Support</li>
+                <li><i class="fas fa-check"></i> Basic E-commerce</li>
+                <li><i class="fas fa-check"></i> Google Analytics</li>
+              </ul>
+            </div>
+            <div class="pricing-action">
+              <a href="#contact" class="btn btn-primary">Get Started</a>
+            </div>
+          </div>
+
+          <div class="pricing-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="pricing-header">
+              <h3 class="plan-name">Enterprise</h3>
+              <p class="plan-description">For large organizations</p>
+              <div class="price">
+                <span class="currency">$</span>
+                <span class="amount monthly">399</span>
+                <span class="amount yearly">299</span>
+                <span class="period">/month</span>
+              </div>
+            </div>
+            <div class="pricing-features">
+              <ul>
+                <li><i class="fas fa-check"></i> Unlimited Pages</li>
+                <li><i class="fas fa-check"></i> Custom Design</li>
+                <li><i class="fas fa-check"></i> Advanced SEO & Marketing</li>
+                <li><i class="fas fa-check"></i> Custom Forms & CRM</li>
+                <li><i class="fas fa-check"></i> 12 Months Support</li>
+                <li><i class="fas fa-check"></i> Full E-commerce</li>
+                <li><i class="fas fa-check"></i> Custom Analytics</li>
+              </ul>
+            </div>
+            <div class="pricing-action">
+              <a href="#contact" class="btn btn-outline">Contact Us</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pricing-note" data-aos="fade-up" data-aos-delay="200">
+          <p>All plans include SSL certificate, hosting, and regular backups. Need something custom? <a href="#contact">Contact us</a> for a personalized quote.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-badge">Testimonials</span>
+          <h2 class="section-title">What Our Clients Say</h2>
+          <p class="section-description">
+            Don't just take our word for it. Here's what our clients have to say about our work.
+          </p>
+        </div>
+
+        <div class="testimonials-carousel" id="testimonialsCarousel">
+          <div class="testimonial-slide active">
+            <div class="testimonial-content">
+              <div class="testimonial-quote">
+                <i class="fas fa-quote-left"></i>
+              </div>
+              <p class="testimonial-text">
+                "Moderna transformed our digital presence completely. Their attention to detail 
+                and innovative approach resulted in a 150% increase in our online conversions. 
+                The team is professional, responsive, and truly understands modern web design."
+              </p>
+              <div class="testimonial-author">
+                <div class="author-image">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop" alt="John Smith">
+                </div>
+                <div class="author-info">
+                  <h4 class="author-name">John Smith</h4>
+                  <p class="author-title">CEO, TechStart Inc.</p>
+                  <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-slide">
+            <div class="testimonial-content">
+              <div class="testimonial-quote">
+                <i class="fas fa-quote-left"></i>
+              </div>
+              <p class="testimonial-text">
+                "Working with Moderna was a game-changer for our business. They delivered 
+                a stunning mobile app that our customers love. The project was completed 
+                on time and within budget. Highly recommended!"
+              </p>
+              <div class="testimonial-author">
+                <div class="author-image">
+                  <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=150&auto=format&fit=crop" alt="Sarah Johnson">
+                </div>
+                <div class="author-info">
+                  <h4 class="author-name">Sarah Johnson</h4>
+                  <p class="author-title">Founder, FitLife App</p>
+                  <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-slide">
+            <div class="testimonial-content">
+              <div class="testimonial-quote">
+                <i class="fas fa-quote-left"></i>
+              </div>
+              <p class="testimonial-text">
+                "Exceptional service and outstanding results. Moderna helped us rebrand 
+                our entire digital identity. The new website and brand guidelines exceeded 
+                our expectations. Our brand recognition has improved significantly."
+              </p>
+              <div class="testimonial-author">
+                <div class="author-image">
+                  <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=150&auto=format&fit=crop" alt="Michael Chen">
+                </div>
+                <div class="author-info">
+                  <h4 class="author-name">Michael Chen</h4>
+                  <p class="author-title">Marketing Director, Creative Co.</p>
+                  <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-controls">
+          <button class="carousel-btn prev-btn" aria-label="Previous testimonial">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <div class="carousel-dots">
+            <button class="dot active" data-slide="0"></button>
+            <button class="dot" data-slide="1"></button>
+            <button class="dot" data-slide="2"></button>
+          </div>
+          <button class="carousel-btn next-btn" aria-label="Next testimonial">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-badge">FAQ</span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-description">
+            Find answers to common questions about our services and process.
+          </p>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-content" data-aos="fade-right">
+            <div class="faq-item">
+              <div class="faq-question">
+                <h4>How long does a typical project take?</h4>
+                <i class="fas fa-plus"></i>
+              </div>
+              <div class="faq-answer">
+                <p>Project timelines vary depending on complexity and scope. A simple website typically takes 2-4 weeks, while complex applications can take 8-12 weeks. We provide detailed timelines during our initial consultation.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <h4>Do you provide ongoing maintenance?</h4>
+                <i class="fas fa-plus"></i>
+              </div>
+              <div class="faq-answer">
+                <p>Yes! We offer comprehensive maintenance packages including security updates, content updates, performance monitoring, and technical support. Our maintenance plans are flexible and can be customized to your needs.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <h4>What's your design process?</h4>
+                <i class="fas fa-plus"></i>
+              </div>
+              <div class="faq-answer">
+                <p>Our process includes discovery, wireframing, design mockups, client feedback, development, testing, and launch. We keep you involved at every step to ensure the final product meets your vision and goals.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <h4>Do you work with small businesses?</h4>
+                <i class="fas fa-plus"></i>
+              </div>
+              <div class="faq-answer">
+                <p>Absolutely! We work with businesses of all sizes, from startups to large enterprises. We have packages and solutions tailored specifically for small businesses and startups.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <h4>What technologies do you use?</h4>
+                <i class="fas fa-plus"></i>
+              </div>
+              <div class="faq-answer">
+                <p>We use modern, proven technologies including React, Vue.js, Node.js, Python, WordPress, Shopify, and more. We select the best technology stack based on your specific requirements and goals.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-visual" data-aos="fade-left">
+            <div class="faq-image">
+              <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=600&auto=format&fit=crop" alt="Team discussion">
+            </div>
+            <div class="contact-card">
+              <h4>Still have questions?</h4>
+              <p>Can't find the answer you're looking for? Our team is here to help.</p>
+              <a href="#contact" class="btn btn-primary">
+                <i class="fas fa-comments"></i>
+                <span>Contact Us</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-badge">Get In Touch</span>
+          <h2 class="section-title">Let's Start Your Project</h2>
+          <p class="section-description">
+            Ready to transform your digital presence? Let's discuss your project 
+            and bring your vision to life.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info" data-aos="fade-right">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Visit Us</h4>
+                <p>123 Design Street<br>Creative District, NY 10001</p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Call Us</h4>
+                <p>+1 (555) 123-4567<br>Mon - Fri, 9AM - 6PM</p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Email Us</h4>
+                <p>hello@moderna.com<br>info@moderna.com</p>
+              </div>
+            </div>
+
+            <div class="contact-social">
+              <h4>Follow Us</h4>
+              <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-wrapper" data-aos="fade-left">
+            <form class="contact-form" id="contactForm">
+              <div class="form-group">
+                <div class="input-group">
+                  <label for="firstName">First Name *</label>
+                  <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="input-group">
+                  <label for="lastName">Last Name *</label>
+                  <input type="text" id="lastName" name="lastName" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="input-group">
+                  <label for="email">Email Address *</label>
+                  <input type="email" id="email" name="email" required>
+                </div>
+                <div class="input-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="tel" id="phone" name="phone">
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label for="company">Company Name</label>
+                <input type="text" id="company" name="company">
+              </div>
+
+              <div class="input-group">
+                <label for="service">Service Interested In *</label>
+                <select id="service" name="service" required>
+                  <option value="">Select a service</option>
+                  <option value="web-development">Web Development</option>
+                  <option value="mobile-app">Mobile App Development</option>
+                  <option value="ui-ux-design">UI/UX Design</option>
+                  <option value="branding">Branding & Identity</option>
+                  <option value="ecommerce">E-commerce Solutions</option>
+                  <option value="seo-marketing">SEO & Digital Marketing</option>
+                  <option value="maintenance">Maintenance & Support</option>
+                  <option value="consultation">Consultation</option>
+                </select>
+              </div>
+
+              <div class="input-group">
+                <label for="budget">Project Budget</label>
+                <select id="budget" name="budget">
+                  <option value="">Select budget range</option>
+                  <option value="under-5k">Under $5,000</option>
+                  <option value="5k-10k">$5,000 - $10,000</option>
+                  <option value="10k-25k">$10,000 - $25,000</option>
+                  <option value="25k-50k">$25,000 - $50,000</option>
+                  <option value="50k-plus">$50,000+</option>
+                </select>
+              </div>
+
+              <div class="input-group">
+                <label for="message">Project Details *</label>
+                <textarea id="message" name="message" rows="5" required placeholder="Tell us about your project, goals, and any specific requirements..."></textarea>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary btn-large">
+                  <span>Send Message</span>
+                  <i class="fas fa-paper-plane"></i>
+                </button>
+                <p class="form-note">We'll get back to you within 24 hours</p>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Map Section -->
+        <div class="map-section" data-aos="fade-up" data-aos-delay="200">
+          <div class="map-container">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387191.0360152458!2d-74.30932777004296!3d40.697669986482614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sus!4v1645123456789!5m2!1sen!2sus"
+              width="100%" 
+              height="400" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Office Location">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section" data-aos="fade-up" data-aos-delay="100">
+          <div class="footer-brand">
+            <div class="brand">
+              <div class="logo">
+                <i class="fas fa-rocket"></i>
+              </div>
+              <div class="brand-text">
+                <div class="brand-name">Moderna</div>
+                <div class="brand-tagline">Digital Solutions</div>
+              </div>
+            </div>
+            <p class="footer-description">
+              Creating exceptional digital experiences that drive business growth 
+              and inspire meaningful connections with your audience.
+            </p>
+            <div class="footer-social">
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+              <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-section" data-aos="fade-up" data-aos-delay="200">
+          <h4 class="footer-title">Services</h4>
+          <ul class="footer-links">
+            <li><a href="#services">Web Development</a></li>
+            <li><a href="#services">Mobile Apps</a></li>
+            <li><a href="#services">UI/UX Design</a></li>
+            <li><a href="#services">Branding</a></li>
+            <li><a href="#services">E-commerce</a></li>
+            <li><a href="#services">SEO & Marketing</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section" data-aos="fade-up" data-aos-delay="300">
+          <h4 class="footer-title">Company</h4>
+          <ul class="footer-links">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#team">Our Team</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section" data-aos="fade-up" data-aos-delay="400">
+          <h4 class="footer-title">Resources</h4>
+          <ul class="footer-links">
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Case Studies</a></li>
+            <li><a href="#">Documentation</a></li>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section" data-aos="fade-up" data-aos-delay="500">
+          <h4 class="footer-title">Newsletter</h4>
+          <p class="newsletter-text">
+            Stay updated with our latest projects and industry insights.
+          </p>
+          <form class="newsletter-form">
+            <div class="newsletter-input">
+              <input type="email" placeholder="Enter your email" required>
+              <button type="submit" class="newsletter-btn">
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p class="copyright">
+            © <span id="currentYear"></span> Moderna Digital Solutions. All rights reserved.
+          </p>
+          <div class="footer-bottom-links">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Cookies</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky CTA -->
+  <div class="sticky-cta" id="stickyCTA">
+    <div class="sticky-content">
+      <span class="sticky-text">Ready to start your project?</span>
+      <a href="#contact" class="btn btn-primary btn-small">
+        <span>Get Quote</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
